@@ -6,7 +6,7 @@
 
     <title>bazart | pagina inicial</title>
     <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/LOGO.png">
+    <link rel="icon" type="image/png" href="./assets/LOGO.png">
 </head>
 <body>
     <div class="header">
@@ -16,11 +16,9 @@
                 <li class="agora">
                     <a href="#">inicial</a>
                 </li>
-                <li>|</li>
                 <li>
                     <a href="login.html">login</a>
                 </li>
-                <li>|</li>
                 <li>
                     <a href="cadastro.html">cadastro</a>
                 </li>
@@ -30,61 +28,66 @@
 
     <div class="banner"> <!--old miniature-->
         <div class="container">
-            <div class="persian">هنر زبان خاموش دل هاست</div>
-            <div class="portuguse">A arte é a linguagem silenciosa dos corações.</div>
+            <div class="message">
+                <div class="persian">هنر زبان خاموش دل هاست</div>
+                <div class="portuguese">A arte é a linguagem silenciosa dos corações.</div>
+            </div>
         </div>
     </div>
 
     <div class="sobre">
         <div class="container">
+            <div class="parte1">
             <h2 class="titulo">Bem-vindo(a) a uma Jornada pela Arte Persa</h2>
             <p class="texto">Explore uma experiência virtual onde a beleza antiga encontra a interatividade moderna. Descubra símbolos, caligrafias, músicas, padrões e histórias que refletem séculos de criatividade persa. Navegue, jogue e crie em um bazar digital cheio de memórias e significados.</p>
             <a href="cadastro.html">
                 <button class="botao">Entrar no Bazar</button>
             </a>
-            
-            <img src="./assets/Tabriz-Area-Rug.jpg"> <!--tapete persa-->
+            </div>
+            <img src="./assets/Tabriz-Area-Rug.jpg" loading="lazy" alt="tapete"> <!--tapete persa-->
         </div>
     </div>
-    <div class="recursos">
+    <div class="social">
         <div class="container">
-            <div class="cartoes">
-                <div class="cartao">
-                    <img src="./assets/Senmurv.svg.png">
+            <div class="boxes">
+                <div class="box">
+                    <img src="./assets/Senmurv.svg.png" loading="lazy" alt="simbolo">
                     <h3 class="titulo">Meu Símbolo Persa</h3>
                     <p class="texto">Faça um quiz para descobrir qual símbolo ou estilo artístico persa combina com você.</p>
                     <a href="cadastro.html">
                         <button class="botao">Explorar</button>
                     </a>
                 </div>
-                <div class="cartao">
-                    <img src="./assets/persian-calligraphy-this-abstract-design-260nw-2434280369.jpg">
+                <div class="box">
+                    <img src="./assets/persian-calligraphy-this-abstract-design-260nw-2434280369.jpg" loading="lazy" alt="caligrafia">
                     <h3 class="titulo">Cantinho da Caligrafia</h3>
                     <p class="texto">Transforme seu nome ou uma frase em caligrafia persa com estilos visuais únicos.</p>
                     <a href="cadastro.html">
                         <button class="botao">Criar</button>
                     </a>
                 </div>
-                <div class="cartao">
-                    <img src="./assets/images.jpg">
+                <div class="box">
+                    <img src="./assets/images.jpg" loading="lazy" alt="padrao">
                     <h3 class="titulo">Gerador de Padrões Persas</h3>
                     <p class="texto">Crie seus próprios padrões inspirados na arte persa.</p>
                     <a href="cadastro.html">
                         <button class="botao">Desenhar</button>
                     </a>
                 </div>
-                <div class="cartao">
-                    <img src="./assets/Persian-Instruments.webp">
+                <div class="box">
+                    <img src="./assets/Persian-Instruments.webp" loading="lazy" alt="instrumentos">
                     <h3 class="titulo">Músicas e Tradições</h3>
                     <p class="texto">Ouça uma seleção de músicas tradicionais persas para acompanhar sua jornada.</p>
                     <a href="cadastro.html">
                         <button class="botao">Ouvir</button>
                     </a>
                 </div>
-                <div class="cartao">
-                    <img src="./assets/31iran-installation1-superJumbo-v2.jpg">
+                <div class="box">
+                    <img src="./assets/31iran-installation1-superJumbo-v2.jpg" loading="lazy" alt="galeria">
                     <h3 class="titulo">Galeria & Carta do Dia</h3>
-                    <p class="texto">Veja suas criações e descubra uma nova obra de arte persa a cada dia.</p>
+                    <p class="texto">Veja suas criações e descubra uma nova obra de arte persa a cada dia.
+
+                    </p>
                     <a href="cadastro.html">
                         <button class="botao">Ver</button>
                     </a>
@@ -94,6 +97,7 @@
     </div>
     <div class="cliente">
         <div class="container">
+            <div class="parte1">
             <h2 class="titulo">Personalize sua Experiência</h2>
             <p class="texto">"Crie uma conta para salvar seus resultados do quiz, padrões criados, obras favoritas e pontuações. Faça parte de uma galeria digital coletiva da arte persa."</p>
             <a href="login.html">
@@ -102,7 +106,8 @@
             <a href="cadastro.html">
                 <button class="botao">Cadastrar-se</button>
             </a>
-            <img src="./assets/conjunto-de-padrões-com-detalhes-da-parede-mosaica-persa-tradicional-o-irã-do-ornamento-geométrico-e-floral-elementos-236259772.jpg"> <!--padrão persa-->
+            </div>
+            <img src="./assets/conjunto-de-padrões-com-detalhes-da-parede-mosaica-persa-tradicional-o-irã-do-ornamento-geométrico-e-floral-elementos-236259772.jpg" loading="lazy" alt="padroes"> <!--padrão persa-->
         </div>
     </div>
     <div class="footer">
@@ -110,7 +115,7 @@
             <p class="texto">Criado por Hanieh | Desenvolvido com HTML, CSS, JavaScript e MySQL</p>
                <p class="texto">
                 <a href="">[GitHub]</a>
-                •
+                
                 <a href="">[Trello]</a>
                </p>     
                 <p class="texto">Todas as imagens e conteúdos inspirados na herança cultural persa. </p> 
