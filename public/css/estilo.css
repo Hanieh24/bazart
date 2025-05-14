@@ -19,12 +19,13 @@
     --tamanho-header:80px;
     --tamanho-footer: 65px;
     --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-family:'Lato', sans-serif;
+    font-family:'cairo', sans-serif;
     background-color: var(--ivory);
     color: var(--persian-blue);
 }
@@ -95,8 +96,6 @@ body {
     color: var(--light-gold);
 }
 
-
-
 .banner {
     height: var(--tamanho-banner);
     color:var(--ivory);
@@ -144,6 +143,7 @@ body {
 .sobre{
     margin: 10px;
 }
+
 .sobre .container{
     width: 90%;
     justify-content: space-evenly;
@@ -166,13 +166,17 @@ body {
 .botao {
     background-color: var(--light-gold);
     color: var(--ivory);
-    padding: 10px 20px;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     margin: 10px 5px;
     font-weight: bold;
     transition: background-color 0.3s ;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    width: 150px;
+    height: 30px;
+    align-self: center;
 }
 
 .botao:hover {
@@ -228,7 +232,7 @@ body {
     align-items: center;
     border:5px solid var(--light-blue);
     width: 200px;
-    border-radius: 100px;
+    border-radius: 90px;
     padding: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -243,12 +247,13 @@ body {
 }
 
 .box .botao:hover {
-    background-color: var(--light-gold);
+    background-color: var(--carmison-red);
 }
 
 .cliente{
     margin: 10px;
 }
+
 .cliente .container{
     width: 90%;
     justify-content: space-evenly;
@@ -279,6 +284,7 @@ body {
     height: 150px;
     display: flex;
     font-size: 15px;
+    border-top: 2px solid var(--light-gold);
 }
 
 .footer .container p{
@@ -292,3 +298,127 @@ body {
     text-align: center;
     color: var(--ivory);
 }
+
+.login {
+    height: var(--tamanho-login);
+    background-image: url(../assets/ffdfc7f6-0f80-4b81-9db6-c8104d3abb33.jpg);
+    background-size: cover;
+}
+
+.login .container {
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+.card {
+    width: 40%;
+    background-color: var(--ivory);
+    border-radius: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: var(--carmison-red);
+    flex-direction: column;
+    height: fit-content;
+    padding: 20px 0;
+    box-shadow: 0 0 15px var(--persian-blue);
+}
+
+.card h2 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.formulario {
+    display: flex;
+    height: 90%;
+    width: 80%;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.formulario span {
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.formulario select {
+    border: 2px solid var(--light-gold);
+    background-color: var(--ivory);
+    color: gray;
+    height: 36px;
+    text-align: center;
+    border-radius: 10px;
+    margin:0;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 5px 0;
+}
+
+.loading-div {
+    width: 50px;
+    display: none;
+}
+
+.loading-div img {
+    height: 50px;
+    width: 50px;
+}
+
+#div_erros_login {
+    display: none;
+}
+
+.alert_erro {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card_erro {
+    display: none;
+    background-color: var(--ivory);
+    color: var(--persian-blue);
+    width: 230px;
+    position: fixed;
+    border-radius: 5px;
+    border: var(--light-gold) 3px solid;
+    padding: 10px;
+    margin-right: 10%;
+}
+
+.card_erro #mensagem_erro {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.formulario .tipo_campo {
+    font-size: 20px;
+    font-weight: 600 !important;
+}
+
+input{
+    margin-bottom: 10px;
+    border: 2px solid var(--light-gold);
+    padding: 10px;
+    text-align: center;
+    border-radius: 50px;
+}
+
+.btn {
+    border: 0 ;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 15px;
+    color: var(--ivory);
+    background-color: var(--light-gold);
+    width: 120px;
+    align-self: center;
+    margin-top: 5px;
+}
+
