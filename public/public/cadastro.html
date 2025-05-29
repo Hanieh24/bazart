@@ -6,16 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>AquaTech | Cadastro</title>
+  <title>bazart | Cadastro</title>
 
   <script src="./js/sessao.js"></script>
 
   <link rel="stylesheet" href="./css/estilo.css" />
-  <link rel="icon" href="./assets/icon/favicon2.ico" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="icon" type="image/png" href="./assets/LOGO.png" />
+  
 </head>
 
-<body onload="listar()">
+<body >
   <div class="header">
         <div class ="container">
             <h1 class="titulo">bazart</h1>
@@ -105,16 +105,16 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
+    /*var codigoVar = codigo_input.value;*/
+    /*var idEmpresaVincular*/
 
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == ""
+      confirmacaoSenhaVar == "" /*||
+      codigoVar == ""*/
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
@@ -127,7 +127,7 @@
     }
 
     // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+    /*for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
       if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
         idEmpresaVincular = listaEmpresasCadastradas[i].id
         console.log("Código de ativação válido.");
@@ -137,7 +137,7 @@
         mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
         finalizarAguardar();
       }
-    }
+    }*/
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -150,8 +150,8 @@
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
-        senhaServer: senhaVar,
-        idEmpresaVincularServer: idEmpresaVincular
+        senhaServer: senhaVar
+        /*idEmpresaVincularServer: idEmpresaVincular*/
       }),
     })
       .then(function (resposta) {
@@ -182,7 +182,7 @@
   }
 
   // Listando empresas cadastradas 
-  function listar() {
+  /*function listar() {
     fetch("/empresas/listar", {
       method: "GET",
     })
@@ -199,7 +199,7 @@
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
       });
-  }
+  }*/
 
   function sumirMensagem() {
     cardErro.style.display = "none";
