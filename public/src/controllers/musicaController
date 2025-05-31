@@ -1,0 +1,62 @@
+var musicaModel =require("../models/musicaModel");
+
+function mostrar(req, res){
+     musicaModel.mostrar().then(
+        function (resultado) {
+            if (resultado.length > 0) {
+                res.json(resultado);
+            } else {
+                res.status(404).json({ error: "Nenhuma musica encontrada" });
+            }
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            res.status(500).json({ error: "Erro ao buscar musica" });
+        }
+     )
+}
+
+function salvar(req, res){
+    var idUsuario = req.session.idUsuario;
+    var idMusica = req.body.idMusica;
+    musicaModel.salvar(idUsuario, idMusica).then(
+        function (resultado) {
+            if (resultado.length > 0) {
+                res.json(resultado[0]);
+            } else {
+                res.status(404).json({ error: "Nenhuma musica encontrada" });
+            }
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            res.status(500).json({ error: "Erro ao buscar musica" });
+        }
+    )
+}
+
+function playlist(req, res){
+    var idUsuario = req.session.idUsuario;
+    var idMusica = req.body.idMusica;
+    musicaModel.salvar(idUsuario, idMusica).then(
+        function (resultado) {
+            if (resultado.length > 0) {
+                res.json(resultado[0]);
+            } else {
+                res.status(404).json({ error: "Nenhuma musica encontrada" });
+            }
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            res.status(500).json({ error: "Erro ao buscar musica" });
+        }
+    )
+}
+
+module.exports = {
+    mostrar,
+    salvar,
+    playlist
+}

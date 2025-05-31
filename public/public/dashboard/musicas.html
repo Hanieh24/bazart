@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
-    <link rel="icon" type="image/png" href="./assets/LOGO.png" />
+    <link rel="icon" type="image/png" href="../assets/LOGO.png" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bazart | Arte do dia</title>
+    <title>Bazart | Música</title>
 
     
     <link rel="stylesheet" href="./../css/dashboards.css">
@@ -25,11 +24,7 @@
     <!--FONT AWESOME-->
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
-
-<!-- <body onload=" atualizarFeed()"> -->
-
-<body>
-
+<body onload="loadPlaylist()">
     <div class="janela">
         <div class="header-left">
             <h1 class="titulo">Bazart</h1>
@@ -64,36 +59,52 @@
         
         
         </div>
-        <div class="arte">
-            <h1>🎨 Arte Persa do Dia</h1>
-            <div class="art-box" id="artBox">
-                <h2 class="titulo" id="title">Carregando...</h2>
-                <img id="image" src="" alt="Imagem da arte" />
-                <p id="description"></p>
-            </div>
-        </div>
+        <div class="music-playlist">
+            <h2>Playlist Persa</h2>
+            <div id="playlist-container"></div>
+            <audio id="audioPlayer" controls></audio>
+        </div>       
     </div>
-
-
 </body>
-
 </html>
-
 <script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    fetch('/arte/mostrar')
-      .then(response => response.json())
-      .then(data => {
-        if (data.error) {
-          document.getElementById('title').textContent = 'Erro ao carregar';
-        } else {
-          document.getElementById('title').textContent = data.title;
-          document.getElementById('image').src = data.img_url;
-          document.getElementById('description').textContent = data.descricao;
-        }
-      })
-      .catch(err => {
-        console.error('Erro de conexão:', err);
-        document.getElementById('title').textContent = 'Erro ao conectar';
+    function playSong(path) {
+      const player = document.getElementById('audioPlayer');
+      
+      player.src = path;
+      player.play();
+    }
+    async function likeSong(idMusica) {
+      await fetch('/playlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id_musica: idMusica })
       });
+      alert('Adicionado à sua playlist!');
+    }
+
+    async function loadPlaylist() {
+        try {
+            const response = await fetch('/musica/mostrar');
+            const musicas = await response.json();
+
+            const container = document.getElementById('playlist-container');
+            container.innerHTML = '';
+
+            musicas.forEach(musica => {
+                const songDiv = document.createElement('div');
+                songDiv.innerHTML = `
+                <p>${musica.title} - ${musica.artist}</p>
+                <button onclick="playSong('${musica.music_url}')">▶️</button>
+                <button onclick="likeSong(${musica.id})">❤️</button>
+                `;
+                container.appendChild(songDiv);
+            });
+        } catch (err) {
+            console.error('Erro ao carregar músicas:', err);
+        }
+    }
+
+    window.onload = loadPlaylist;
+
 </script>

@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
     <link rel="icon" type="image/png" href="./assets/LOGO.png" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bazart | Arte do dia</title>
+    <title>Bazart | Meu Símbolo Persa</title>
 
     
     <link rel="stylesheet" href="./../css/dashboards.css">
@@ -25,32 +24,26 @@
     <!--FONT AWESOME-->
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
-
-<!-- <body onload=" atualizarFeed()"> -->
-
 <body>
-
     <div class="janela">
         <div class="header-left">
-            <h1 class="titulo">Bazart</h1>
+            <h1>Bazart</h1>
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
-            <div class="btn-nav">
-
-                <h3>Arte do dia</h3>
-
-            </div>
-            
             <div class="btn-nav-white">
                 <a href="./quiz.html">
                     <h3>Meu Símbolo Persa</h3>
                 </a>
             </div>
 
-            
+            <!--<div class="btn-nav">
+
+                <h3>Gráficos</h3>
+
+            </div>-->
 
             <div class="btn-nav-white">
                 <a href="./musicas.html">
@@ -61,39 +54,24 @@
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
-        
-        
+
         </div>
-        <div class="arte">
-            <h1>🎨 Arte Persa do Dia</h1>
-            <div class="art-box" id="artBox">
-                <h2 class="titulo" id="title">Carregando...</h2>
-                <img id="image" src="" alt="Imagem da arte" />
-                <p id="description"></p>
+
+        <div id="quiz-container">
+            <h2 id="question">Question Text</h2>
+            <div id="options">
+                <button class="option">Option A</button>
+                <button class="option">Option B</button>
+                <button class="option">Option C</button>
+                <button class="option">Option D</button>
             </div>
+            <button id="next">Next</button>
+        </div>
+        <div id="result" style="display:none;">
+        <h2>Your Persian Art Symbol:</h2>
+        <p id="result-text"></p>
         </div>
     </div>
-
-
+    
 </body>
-
 </html>
-
-<script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    fetch('/arte/mostrar')
-      .then(response => response.json())
-      .then(data => {
-        if (data.error) {
-          document.getElementById('title').textContent = 'Erro ao carregar';
-        } else {
-          document.getElementById('title').textContent = data.title;
-          document.getElementById('image').src = data.img_url;
-          document.getElementById('description').textContent = data.descricao;
-        }
-      })
-      .catch(err => {
-        console.error('Erro de conexão:', err);
-        document.getElementById('title').textContent = 'Erro ao conectar';
-      });
-</script>

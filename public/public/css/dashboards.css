@@ -1,6 +1,183 @@
 /* pagina mural */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Belanosima:wght@400;600;700&family=Cairo:wght@200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Belanosima:wght@400;600;700&family=Cairo:wght@200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Belanosima:wght@400;600;700&family=Cairo:wght@200..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Belanosima:wght@400;600;700&family=Cairo:wght@200..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Nastaliq+Urdu:wght@400..700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --light-blue: #40e0d0;
+    --royal-orange: #ff6700;
+    --carmison-red: #990000;
+    --ivory:#f5f5f5;
+    --royal-orange: #D67F2B;
+    --persian-blue: #14213D;
+    --blue: #1c39bb;
+    --light-gold: #FCA311;
+    --golden: #ffd700;
+    --white: #FFFFFF;
+    --beige: #E5E5E5;
+    --soft-gray: #F5F5F5;
+    --tamanho-header:80px;
+    --tamanho-footer: 65px;
+    --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+    --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family:'cairo', sans-serif;
+    background-color: var(--ivory);
+    color: var(--persian-blue);
+}
+
+
+.janela {
+    display: flex;
+    height: 100vh;
+    background-color: var(--ivory);
+    justify-content: flex-end;
+    background-image: url(../assets/flat-arabic-pattern-background_79603-1826.avif);
+}
+
+.arte{
+      width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.header-left {
+  width: 20%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  height: 100vh;
+  justify-content: space-evenly;
+    background-color: var(--persian-blue);
+    color: var(--ivory);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 3px solid var(--light-gold);
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Playfair Display', serif;
+}
+
+.dash-right {
+  display: flex;
+  width: 70%;
+  height: fit-content;
+  background-color: var(--persian-blue);
+  position: relative;
+  top: 0;
+  left: 25%;
+  height: 100vh;
+  overflow: auto;
+}
+
+.header-left h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-family: 'Noto Nastaliq Urdu', serif;
+    color: var(--golden);
+}
+
+.hello {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.hello h3 {
+  font-size: 20px;
+    font-family: 'Cairo', sans-serif;
+    margin-bottom: 30px;
+    color: var(--light-gold);
+}
+
+.hello h3 span {
+  font-weight: 800;
+}
+
+.btn-nav,
+.btn-nav-white {
+    width: 100%;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-nav h3,
+.btn-nav-white h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.btn-nav {
+   background-color: var(--light-gold);
+    color: var(--persian-blue);
+    font-weight: bold;
+}
+
+.btn-nav-white {
+  background-color: transparent;
+    border: 2px solid var(--light-gold);
+    color: var(--ivory);
+}
+
+.btn-nav-white:hover {
+    background-color: var(--light-gold);
+    color: var(--persian-blue);
+}
+
+.btn-nav-white h3 {
+  margin: 0;
+    font-size: 18px;
+}
+
+.btn-nav:hover {
+    background-color: var(--golden);
+}
+
+.btn-nav-white a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.btn-nav h3,
+.btn-logout h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.btn-logout {
+  margin-top: auto;
+  padding: 10px 15px;
+  width: 20%;
+  background-color: var(--carmison-red);
+  color: var(--ivory);
+  border-radius: 30px;
+  text-align: center;
+  padding: 10px 15px;
+  margin-bottom: 100px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #cc0000;
+}
+/*@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body {
   margin: 0;
@@ -109,7 +286,7 @@ body {
   margin-left: 30px;
 }
 
-/* pagina graficos */
+/* pagina graficos 
 
 .dash-header {
   background-color: #212124;
@@ -126,7 +303,7 @@ body {
 }
 
 .area-parametros-alerta {
-  /* border: 2px solid pink; */
+  /* border: 2px solid pink; 
   display: flex;
   flex-direction: column;
   width: 70%;
@@ -203,9 +380,9 @@ body {
   width: fit-content;
   flex-wrap: wrap;
   display: flex;
-  /* text-align: center; */
+  /* text-align: center; 
   height: 180px;
-  /* justify-content: right; */
+  /* justify-content: right; 
   background-color: #212124;
   font-size: 20px;
 }
@@ -327,102 +504,3 @@ canvas {
 
 /* PAGINA DOS GRÁFICOS 2023 */
 
-.janela {
-  display: flex;
-  /* width: 100vw; */
-}
-
-.header-left a {
-  text-decoration: none;
-  color: white;
-}
-
-.header-left {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  height: 100vh;
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  border-right: 3px solid #32b9cd;
-  background-color: #212124;
-}
-
-.dash-right {
-  display: flex;
-  width: 70%;
-  height: fit-content;
-  background-color: #161618;
-  position: relative;
-  top: 0;
-  left: 25%;
-  height: 100vh;
-  overflow: auto;
-}
-
-.header-left h1 {
-  color: #32b9cd;
-}
-
-.hello {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.hello h3 {
-  color: #e3b062;
-  font-weight: 300;
-  font-size: 1.2rem;
-}
-
-.hello h3 span {
-  font-weight: 800;
-}
-
-.btn-nav {
-  width: 40%;
-  color: white;
-  background-color: #e6005a;
-  border-radius: 5px;
-  text-align: center;
-  padding: 2% 5%;
-}
-
-.btn-nav-white {
-  width: 40%;
-  background-color: white;
-  border: 3px solid #e6005a;
-  border-radius: 5px;
-  text-align: center;
-  padding: 2% 5%;
-}
-
-.btn-nav-white h3 {
-  color: #e6005a;
-  padding: 0;
-  margin: 0;
-}
-
-.btn-nav h3,
-.btn-logout h3 {
-  margin: 0;
-  padding: 0;
-}
-
-.btn-logout {
-  margin: 0;
-  padding: 0;
-  width: 20%;
-  background-color: #32b9cd;
-  color: white;
-  border-radius: 10px;
-  text-align: center;
-  padding: 10px 15px;
-  margin-bottom: 100px;
-  cursor: pointer;
-}

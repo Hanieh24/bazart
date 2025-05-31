@@ -26,6 +26,28 @@ CREATE TABLE usuario (
 	/*FOREIGN KEY (fk_empresa) REFERENCES empresa(id)*/
 );
 
+create table art_of_the_day (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	title VARCHAR(50),
+	img_url VARCHAR(1000),
+	descricao VARCHAR(1000)
+);
+
+create table musica (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	title VARCHAR(50),
+	music_url VARCHAR(100),
+	artist VARCHAR(50)
+);
+
+create table usuario_musica(
+	fkusuario INT ,
+	fkmusica INT ,
+	PRIMARY KEY(fkusuario, fkmusica),
+  	FOREIGN KEY (fkusuario) REFERENCES usuario(id),
+  	FOREIGN KEY (fkmusica) REFERENCES musica(id)
+);
+
 /*CREATE TABLE aviso (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	titulo VARCHAR(100),
