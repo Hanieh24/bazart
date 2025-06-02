@@ -16,7 +16,7 @@
     --white: #FFFFFF;
     --beige: #E5E5E5;
     --soft-gray: #F5F5F5;
-    --tamanho-header:80px;
+    --tamanho-header: 90px;
     --tamanho-footer: 65px;
     --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
     --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
@@ -197,24 +197,25 @@ body {
 .social .container {
     justify-content: center;
     width: 90%;
+    height: 600px;
 }
 
 .box img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
     margin:5px;
 }
 
 .box .titulo {
     margin:5px;
-    font-size: 15px;
+    font-size: 20px;
     color: var(--persian-blue);
 }
 
 .box .texto {
     margin:5px;
-    font-size: 15px;
+    font-size: 20px;
     color: #555;
 }
 
@@ -231,8 +232,8 @@ body {
     justify-content: space-evenly;
     align-items: center;
     border:5px solid var(--light-blue);
-    width: 200px;
-    border-radius: 90px;
+    width: 300px;
+    border-radius: 150px;
     padding: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: var(--ivory);
@@ -245,6 +246,9 @@ body {
 .box .botao{
     background-color: var(--blue);
     transition: background-color 0.3s ;
+    width: 200px;
+    height: 50px;
+    font-size: 25px;
 }
 
 .box .botao:hover {
@@ -275,8 +279,8 @@ body {
 }
 
 .cliente img{
-    width: 40%;
-    height: 700px;
+    width: 50%;
+    height: 500px;
 }
 
 .footer {

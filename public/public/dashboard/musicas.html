@@ -75,10 +75,11 @@
       player.play();
     }
     async function likeSong(idMusica) {
-      await fetch('/playlist', {
+      const idUsuario = sessionStorage.ID_USUARIO;
+      await fetch('/musica/salvar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id_musica: idMusica })
+        body: JSON.stringify({ idUsuario: Number(idUsuario), idMusica: Number(idMusica)  })
       });
       alert('Adicionado à sua playlist!');
     }

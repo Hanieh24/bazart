@@ -18,12 +18,15 @@ function mostrar(req, res){
 }
 
 function salvar(req, res){
-    var idUsuario = req.session.idUsuario;
+    console.log(req.body);
+    var idUsuario = req.body.idUsuario; 
     var idMusica = req.body.idMusica;
+    console.log("ID do usuário: " + idUsuario);
+    console.log("ID da música: " + idMusica);
     musicaModel.salvar(idUsuario, idMusica).then(
         function (resultado) {
             if (resultado.length > 0) {
-                res.json(resultado[0]);
+                res.json(resultado);
             } else {
                 res.status(404).json({ error: "Nenhuma musica encontrada" });
             }
@@ -36,27 +39,9 @@ function salvar(req, res){
     )
 }
 
-function playlist(req, res){
-    var idUsuario = req.session.idUsuario;
-    var idMusica = req.body.idMusica;
-    musicaModel.salvar(idUsuario, idMusica).then(
-        function (resultado) {
-            if (resultado.length > 0) {
-                res.json(resultado[0]);
-            } else {
-                res.status(404).json({ error: "Nenhuma musica encontrada" });
-            }
-        }
-    ).catch(
-        function (erro) {
-            console.log(erro);
-            res.status(500).json({ error: "Erro ao buscar musica" });
-        }
-    )
-}
+
 
 module.exports = {
     mostrar,
-    salvar,
-    playlist
+    salvar
 }

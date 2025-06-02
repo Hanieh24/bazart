@@ -1,29 +1,29 @@
-var arteModel =require("../models/arteModel");
+var mainModel = require("../models/mainModel");
 
-function mostrar(req, res){
-    arteModel.mostrar().then(
+function playlist(req, res){
+    var idUsuario = req.query.idUsuario;
+    mainModel.playlist(idUsuario).then(
         function (resultado) {
             if (resultado.length > 0) {
-                res.json(resultado[0]);
+                res.json(resultado);
             } else {
-                res.status(404).json({ error: "Nenhuma arte encontrada" });
+                res.status(404).json({ error: "Nenhuma musica encontrada" });
             }
         }
     ).catch(
         function (erro) {
             console.log(erro);
-            res.status(500).json({ error: "Erro ao buscar arte" });
+            res.status(500).json({ error: "Erro ao buscar musica" });
         }
-    );
+    )
 }
 
-function salvara(req, res){
-    var idUsuario = req.body.idUsuario;
-    var idArte = req.body.idArte;
-    arteModel.salvara(idUsuario, idArte).then(
+function list(req, res){
+    var idUsuario = req.query.idUsuario;
+    mainModel.list(idUsuario).then(
         function (resultado) {
             if (resultado.length > 0) {
-                res.json(resultado[0]);
+                res.json(resultado);
             } else {
                 res.status(404).json({ error: "Nenhuma art encontrada" });
             }
@@ -35,8 +35,9 @@ function salvara(req, res){
         }
     )
 }
-  
+
 module.exports = {
-    mostrar,
-    salvara
+    playlist,
+    list
+
 }

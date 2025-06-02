@@ -8,6 +8,8 @@ router.get("/mostrar", function (req, res) {
     arteController.mostrar(req, res);
 });
 
-
+router.post("/salvara", function (req, res) {
+    arteController.salvara(req, res);
+});
 
 module.exports = router;

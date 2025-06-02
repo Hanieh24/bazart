@@ -33,6 +33,14 @@ create table art_of_the_day (
 	descricao VARCHAR(1000)
 );
 
+create table usuario_art(
+	fkusuario INT ,
+	fkart INT ,
+	PRIMARY KEY(fkusuario, fkart),
+  	FOREIGN KEY (fkusuario) REFERENCES usuario(id),
+  	FOREIGN KEY (fkart) REFERENCES art_of_the_day(id)
+);
+
 create table musica (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	title VARCHAR(50),

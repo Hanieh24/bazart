@@ -8,12 +8,9 @@ router.get("/mostrar", function (req, res) {
     musicaController.mostrar(req, res);
 });
 
-router.get("/salvar", function (req, res) {
+router.post("/salvar", function (req, res) {
+    console.log("req.body at top:", req.body);
     musicaController.salvar(req, res);
-});
-
-router.post("/playlist", function (req, res) {
-    musicaController.playlist(req, res);
 });
 
 module.exports = router;

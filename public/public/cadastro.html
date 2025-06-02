@@ -18,16 +18,19 @@
 <body >
   <div class="header">
         <div class ="container">
-            <h1 class="titulo">bazart</h1>
+            <div class="bazart" style="width: 300px; display: flex; align-items: center;">
+            <img src="./assets/LOGO.png" alt="LOGO" style="height:70px; width: 70px; border-radius: 50px;">
+            <h1 class="titulo">Bazart</h1>
+            </div>
             <ul class="navbar">
                 <li >
-                    <a href="index.html">inicial</a>
+                    <a href="index.html">Inicial</a>
                 </li>
-                <li>
-                    <a href="login.html">login</a>
+                <li >
+                    <a href="login.html">Login</a>
                 </li>
                 <li class="agora">
-                    <a href="#">cadastro</a>
+                    <a href="#">Cadastro</a>
                 </li>
             </ul>
         </div>
@@ -48,11 +51,11 @@
                 <div class="formulario">
                     <div class="campo">
                         <span>nome:</span>
-                        <input type="text" id="nome_input" placeholder="sue nome">
+                        <input type="text" id="nome_input" placeholder="Nome">
                     </div>
                     <div class="campo">
                         <span>E-mail:</span>
-                        <input type="email" id="email_input" placeholder="seuemail@provedor.com">
+                        <input type="email" id="email_input" placeholder="email@email.com">
                     </div>
                     <div class="campo">
                         <span>Senha:</span>
@@ -62,7 +65,9 @@
                         <span>Confirmação de senha:</span>
                         <input type="password" id="confirmacao_senha_input" placeholder="********">
                     </div>
+                    <p>Já tem uma conta?<a href="login.html" style="color: blue;">Entrar</a></p>
                     <button class="botao" onclick="cadastrar()">Cadastrar</button>
+                    
                 </div>
                 <div id="div_aguardar" class="loading-div">
                     <img src="./assets/eb7e7769321565.5ba1db95aab9f.gif" id="loading_gif" alt="loading_gif">
@@ -77,13 +82,13 @@
 
     <div class="footer">
         <div class="container">
-            <p class="texto">Criado por Hanieh | Desenvolvido com HTML, CSS, JavaScript e MySQL</p>
-               <p class="texto">
-                <a href="https://github.com/Hanieh24/bazart.git">[GitHub]</a>
+            <div class="texto" style="color: white;margin: 10px;">Criado por Hanieh | Desenvolvido com HTML, CSS, JavaScript e MySQL</div>
+               <div class="texto" style="margin: 10px; text-align: center;">
+                <a href="">[GitHub]</a>
                 
-                
-               </p>     
-                <p class="texto">Todas as imagens e conteúdos inspirados na herança cultural persa. </p> 
+                <a href="">[Trello]</a>
+               </div>     
+                <div class="texto" style="color: white; margin: 10px;">Todas as imagens e conteúdos inspirados na herança cultural persa. </div> 
         </div>
     </div>
 
@@ -107,6 +112,7 @@
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
     /*var codigoVar = codigo_input.value;*/
     /*var idEmpresaVincular*/
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     // Verificando se há algum campo em branco
     if (
@@ -118,11 +124,28 @@
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+        "(por favor preenche todos o caampos)";
 
       finalizarAguardar();
       return false;
-    } else {
+    } else if (!emailRegex.test(emailVar)) {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = "(Por favor, insira um e-mail válido.)";
+        finalizarAguardar();
+        return false;
+    } else if (senhaVar.length < 6) {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML =
+        "(A senha deve ter pelo menos 6 caracteres.)";
+        finalizarAguardar();
+        return false;
+    } else if(senhaVar != confirmacaoSenhaVar){
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML =
+        "(A senha e confirmacao devem ser iguais)";
+        finalizarAguardar();
+        return false;
+    }else{
       setInterval(sumirMensagem, 5000);
     }
 

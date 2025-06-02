@@ -70,6 +70,7 @@
                 <h2 class="titulo" id="title">Carregando...</h2>
                 <img id="image" src="" alt="Imagem da arte" />
                 <p id="description"></p>
+                <button id="like">❤️</button>
             </div>
         </div>
     </div>
@@ -84,16 +85,33 @@
     fetch('/arte/mostrar')
       .then(response => response.json())
       .then(data => {
+        
         if (data.error) {
           document.getElementById('title').textContent = 'Erro ao carregar';
         } else {
           document.getElementById('title').textContent = data.title;
           document.getElementById('image').src = data.img_url;
           document.getElementById('description').textContent = data.descricao;
+          document.getElementById('like').onclick = function() {
+            likeArt(data.id);
+          
+        };
+        const idArte = data.id;  
         }
       })
       .catch(err => {
         console.error('Erro de conexão:', err);
         document.getElementById('title').textContent = 'Erro ao conectar';
       });
+
+      async function likeArt(idArte) {
+      const idUsuario = sessionStorage.ID_USUARIO;
+      
+      await fetch('/arte/salvara', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ idUsuario: Number(idUsuario), idArte: Number(idArte)  })
+      });
+      alert('Adicionado à sua favorita!');
+    }
 </script>
