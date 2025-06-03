@@ -24,8 +24,9 @@
     <!--FONT AWESOME-->
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
-<body onload="loadPlaylist()">
+<body onload="loadPlaylist(); loadChart()">
     <div class="janela">
+            
         <div class="header-left">
             <h1 class="titulo">Bazart</h1>
 
@@ -33,23 +34,23 @@
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
-            <div class="btn-nav">
-
-                <h3>Arte do dia</h3>
-
-            </div>
-            
             <div class="btn-nav-white">
-                <a href="./quiz.html">
-                    <h3>Meu Símbolo Persa</h3>
+                <a href="dashboard.html">
+                    <h3>Arte do dia</h3>
                 </a>
+                
+
+            </div>
+            
+            <div class="btn-nav">
+                
+                    <h3>Músicas e tradições</h3>
+                
             </div>
 
-            
-
             <div class="btn-nav-white">
-                <a href="./musicas.html">
-                    <h3>Músicas e Tradições</h3>
+                <a href="./mural.html">
+                    <h3>Meus favoritos</h3>
                 </a>
             </div>
 
@@ -58,12 +59,25 @@
             </div>
         
         
+        </div >
+
+            
+        <div class="main">
+            <div class="musicas">
+                <div class="music-playlist">
+                    <h2>Playlist Persa</h2>
+                    <div id="playlist-container"></div>
+                    <audio id="audioPlayer" controls></audio>
+                </div>  
+                <div class="chart">
+                    <h2>Músicas Mais Curtidas 🎵</h2>
+                    <canvas id="mostLikedChart"></canvas>
+                </div>
+            </div>
         </div>
-        <div class="music-playlist">
-            <h2>Playlist Persa</h2>
-            <div id="playlist-container"></div>
-            <audio id="audioPlayer" controls></audio>
-        </div>       
+           
+        
+        
     </div>
 </body>
 </html>
@@ -106,6 +120,51 @@
         }
     }
 
-    window.onload = loadPlaylist;
+    async function loadChart() {
+    try {
+        const res = await fetch('/musica/curtidas');
+        const data = await res.json();
+
+        const labels = data.map(item => item.title);
+        const likes = data.map(item => item.likes);
+
+        const ctx = document.getElementById('mostLikedChart').getContext('2d');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Curtidas',
+                    data: likes,
+                    backgroundColor: '#FCA311',
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: false },
+                    title: {
+                        display: true,
+                        text: 'Top 5 Músicas Mais Curtidas'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Erro ao carregar gráfico:', error);
+    }
+}
+
+    window.onload = function(){loadPlaylist(); loadChart();};
 
 </script>

@@ -39,9 +39,25 @@ function salvar(req, res){
     )
 }
 
-
+function curtidas(req, res){
+    musicaModel.curtidas().then(
+        function (resultado) {
+            if (resultado.length > 0) {
+                res.json(resultado);
+            } else {
+                res.status(404).json({ error: "Nenhuma musica curtida" });
+            }
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            res.status(500).json({ error: "Erro ao buscar musica curtida" });
+        }
+    )
+}
 
 module.exports = {
     mostrar,
-    salvar
+    salvar,
+    curtidas
 }

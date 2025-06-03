@@ -18,9 +18,23 @@ function salvar(idUsuario, idMusica) {
     return database.executar(instrucaoSql);
 }
 
+function curtidas(title) {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): " + title);
+    var instrucaoSql = `
+        SELECT m.title, COUNT(um.fkmusica) as likes
+            FROM musica m
+            JOIN usuario_musica um ON m.id = um.fkmusica
+            GROUP BY m.title
+            ORDER BY likes DESC
+            LIMIT 5;
+        `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 
 module.exports = {
     mostrar,
-    salvar
+    salvar,
+    curtidas
 };

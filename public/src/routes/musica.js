@@ -13,4 +13,9 @@ router.post("/salvar", function (req, res) {
     musicaController.salvar(req, res);
 });
 
+router.get("/curtidas", function(req, res){
+    console.log("req.body at top:", req.body);
+    musicaController.curtidas(req, res);
+})
+
 module.exports = router;

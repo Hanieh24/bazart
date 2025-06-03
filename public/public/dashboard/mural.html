@@ -22,43 +22,49 @@
 <body onload="loadFavorites();">
 
     <div class="janela">
-
-
         <div class="header-left">
-
-            <h1>AquaTech</h1>
+            <h1 class="titulo">Bazart</h1>
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
 
             <div class="btn-nav-white">
-                <a href="cards.html">
-                    <h3>Aquários</h3>
-                </a>
+              <a href="dashboard.html">
+                <h3>Arte do dia</h3>
+              </a>  
             </div>
-
+            
             <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
+                <a href="./musicas.html">
+                    <h3>Músicas e tradições</h3>
                 </a>
             </div>
 
             <div class="btn-nav">
-                <h3>Mural de Avisos</h3>
+                
+                    <h3>Meus favoritos</h3>
+                
             </div>
 
             <div class="btn-logout" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
-
+        
+          
         </div>
-
-        <h2>🎵 Suas Músicas Curtidas</h2>
-        <div id="fav-songs"></div>
-
-        <h2>🖼️ Suas Artes Favoritas</h2>
-        <div id="fav-art"></div>
+        <div class="lista">
+          <div>
+            <h2>🎵 Suas Músicas Curtidas</h2>
+            <div id="fav-songs"></div>
+          </div>
+          <div>
+            <h2>🖼️ Suas Artes Favoritas</h2>
+            <div id="fav-art"></div>
+          </div>  
+        </div>
+  </div>
+        
 
 </body>
 

@@ -16,6 +16,7 @@
     --white: #FFFFFF;
     --beige: #E5E5E5;
     --soft-gray: #F5F5F5;
+    --brown: #3b2e2a;
     --tamanho-header: 90px;
     --tamanho-footer: 65px;
     --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
@@ -25,10 +26,12 @@
 body {
     margin: 0;
     padding: 0;
-    font-family:'cairo', sans-serif;
+    font-family: 'Cairo', sans-serif;
     background-color: var(--ivory);
-    background-image: url("../assets/flat-arabic-pattern-background_79603-1826.avif");
     color: var(--persian-blue);
+    background-image: url("../assets/flat-arabic-pattern-background_79603-1826.avif");
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .titulo {
