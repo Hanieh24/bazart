@@ -74,32 +74,55 @@
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    async function loadFavorites() {
-      // Fetch favorite songs
-        const idUsuario = sessionStorage.ID_USUARIO;
-      const songsRes = await fetch(`/main/playlist?idUsuario=${idUsuario}`);
-      const songs = await songsRes.json();
-      const songContainer = document.getElementById('fav-songs');
-      songContainer.innerHTML = songs.map(song => `
-        <div>
-          <strong>${song.title}</strong> - ${song.artist}
-          <audio controls src="${song.music_url}"></audio>
-        </div>
-      `).join('');
-
-      // Fetch favorite art
-      const artRes = await fetch(`/main/list?idUsuario=${idUsuario}`);
-      const art = await artRes.json();
-      const artContainer = document.getElementById('fav-art');
-      artContainer.innerHTML = art.map(a => `
-        <div>
-          <p><strong>${a.title}</strong></p>
-          <img src="${a.img_url}" alt="${a.title}" width="200" />
-          
-          <p>${a.descricao}</p>
-        </div>
-      `).join('');
+    async function loadFavoriteSongs() {
+    const idUsuario = sessionStorage.ID_USUARIO;
+    const songContainer = document.getElementById('fav-songs');
+    try {
+        const songsRes = await fetch(`/main/playlist?idUsuario=${idUsuario}`);
+        if (!songsRes.ok) throw new Error("Erro ao buscar músicas");
+        const songs = await songsRes.json();
+        if (!Array.isArray(songs) || songs.length === 0) {
+            songContainer.innerHTML = "<p>Nenhuma música curtida.</p>";
+        } else {
+            songContainer.innerHTML = songs.map(song => `
+                <div>
+                  <strong>${song.title}</strong> - ${song.artist}
+                  <audio controls src="${song.music_url}"></audio>
+                </div>
+            `).join('');
+        }
+    } catch (err) {
+        songContainer.innerHTML = "<p>Erro ao carregar músicas favoritas.</p>";
     }
+}
+
+async function loadFavoriteArt() {
+    const idUsuario = sessionStorage.ID_USUARIO;
+    const artContainer = document.getElementById('fav-art');
+    try {
+        const artRes = await fetch(`/main/list?idUsuario=${idUsuario}`);
+        if (!artRes.ok) throw new Error("Erro ao buscar artes");
+        const art = await artRes.json();
+        if (!Array.isArray(art) || art.length === 0) {
+            artContainer.innerHTML = "<p>Nenhuma arte favorita.</p>";
+        } else {
+            artContainer.innerHTML = art.map(a => `
+                <div>
+                  <p><strong>${a.title}</strong></p>
+                  <img src="${a.img_url}" alt="${a.title}" width="200" />
+                  <p>${a.descricao}</p>
+                </div>
+            `).join('');
+        }
+    } catch (err) {
+        artContainer.innerHTML = "<p>Erro ao carregar artes favoritas.</p>";
+    }
+}
+
+window.onload = function() {
+    loadFavoriteSongs();
+    loadFavoriteArt();
+};
 
 
 </script>

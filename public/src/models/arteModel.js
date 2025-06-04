@@ -18,7 +18,16 @@ function salvara(idUsuario, idArte) {
     return database.executar(instrucaoSql);
 }
 
+function salvaraUsuario(idUsuario) {
+    var instrucaoSql = `
+        SELECT fkart FROM usuario_art WHERE fkusuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     mostrar,
-    salvara
+    salvara,
+    salvaraUsuario
 };

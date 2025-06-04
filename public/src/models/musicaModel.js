@@ -32,9 +32,18 @@ function curtidas(title) {
     return database.executar(instrucaoSql);
 }
 
+function salvarUsuario(idUsuario) {
+    var instrucaoSql = `
+        SELECT fkmusica FROM usuario_musica WHERE fkusuario = ${idUsuario};
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 
 module.exports = {
     mostrar,
     salvar,
-    curtidas
+    curtidas,
+    salvarUsuario
 };

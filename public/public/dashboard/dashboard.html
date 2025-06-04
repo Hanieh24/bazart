@@ -79,37 +79,60 @@
 </html>
 
 <script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+   b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+async function loadArtOfTheDay() {
+    const idUsuario = sessionStorage.ID_USUARIO;
+    
+    const likedRes = await fetch(`/arte/salvara-usuario?idUsuario=${idUsuario}`);
+    const likedIds = await likedRes.json(); 
+
     fetch('/arte/mostrar')
       .then(response => response.json())
       .then(data => {
-        
         if (data.error) {
           document.getElementById('title').textContent = 'Erro ao carregar';
         } else {
           document.getElementById('title').textContent = data.title;
           document.getElementById('image').src = data.img_url;
           document.getElementById('description').textContent = data.descricao;
-          document.getElementById('like').onclick = function() {
-            likeArt(data.id);
-          
-        };
-        const idArte = data.id;  
+
+          const likeBtn = document.getElementById('like');
+          const isLiked = likedIds.map(Number).includes(Number(data.id));
+
+          if (isLiked) {
+              likeBtn.textContent = '💖';
+              likeBtn.disabled = true;
+              likeBtn.style.opacity = 0.6;
+          } else {
+              likeBtn.textContent = '❤️';
+              likeBtn.disabled = false;
+              likeBtn.style.opacity = 1;
+              likeBtn.onclick = function() {
+                  likeArt(data.id);
+              };
+          }
         }
       })
       .catch(err => {
         console.error('Erro de conexão:', err);
         document.getElementById('title').textContent = 'Erro ao conectar';
       });
+}
 
-      async function likeArt(idArte) {
-      const idUsuario = sessionStorage.ID_USUARIO;
-      
-      await fetch('/arte/salvara', {
+async function likeArt(idArte) {
+    const idUsuario = sessionStorage.ID_USUARIO;
+    await fetch('/arte/salvara', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ idUsuario: Number(idUsuario), idArte: Number(idArte)  })
-      });
-      alert('Adicionado à sua favorita!');
-    }
+    });
+    const likeButton = document.getElementById('like');
+    likeButton.textContent = '💖';
+    likeButton.disabled = true;
+    likeButton.style.opacity = 0.6;
+}
+
+// Call on page load
+window.onload = loadArtOfTheDay;
 </script>

@@ -12,4 +12,8 @@ router.post("/salvara", function (req, res) {
     arteController.salvara(req, res);
 });
 
+router.get('/salvara-usuario', function(req, res) {
+    arteController.salvaraUsuario(req, res);
+});
+
 module.exports = router;

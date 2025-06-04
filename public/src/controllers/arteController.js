@@ -35,8 +35,19 @@ function salvara(req, res){
         }
     )
 }
+
+async function salvaraUsuario(req, res) {
+    const idUsuario = req.query.idUsuario;
+    try {
+        const resultado = await arteModel.salvaraUsuario(idUsuario);
+        res.json(resultado.map(r => r.fkart)); 
+    } catch (erro) {
+        res.status(500).json({ error: "Erro ao buscar músicas curtidas do usuário" });
+    }
+}
   
 module.exports = {
     mostrar,
-    salvara
+    salvara,
+    salvaraUsuario
 }

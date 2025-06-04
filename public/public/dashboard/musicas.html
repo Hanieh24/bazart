@@ -82,36 +82,46 @@
 </body>
 </html>
 <script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
     function playSong(path) {
       const player = document.getElementById('audioPlayer');
       
       player.src = path;
       player.play();
     }
-    async function likeSong(idMusica) {
+    async function likeSong(event, idMusica) {
       const idUsuario = sessionStorage.ID_USUARIO;
       await fetch('/musica/salvar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ idUsuario: Number(idUsuario), idMusica: Number(idMusica)  })
       });
-      alert('Adicionado à sua playlist!');
+      const likeBtn = event.target;
+      likeBtn.textContent = '💖';
+      likeBtn.disabled = true;
+      likeBtn.style.opacity = 0.6;
     }
 
     async function loadPlaylist() {
         try {
+            const idUsuario = sessionStorage.ID_USUARIO;
             const response = await fetch('/musica/mostrar');
             const musicas = await response.json();
+
+            const likedRes = await fetch(`/musica/salvar-usuario?idUsuario=${idUsuario}`);
+            const likedIds = await likedRes.json();
 
             const container = document.getElementById('playlist-container');
             container.innerHTML = '';
 
             musicas.forEach(musica => {
+                const isLiked = likedIds.includes(musica.id);
                 const songDiv = document.createElement('div');
                 songDiv.innerHTML = `
                 <p>${musica.title} - ${musica.artist}</p>
                 <button onclick="playSong('${musica.music_url}')">▶️</button>
-                <button onclick="likeSong(${musica.id})">❤️</button>
+                <button onclick="likeSong(event, ${musica.id})"${isLiked ? "disabled style='opacity:0.6'" : ""}
+                >${isLiked ? "💖" : "❤️"}</button>
                 `;
                 container.appendChild(songDiv);
             });

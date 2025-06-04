@@ -18,4 +18,7 @@ router.get("/curtidas", function(req, res){
     musicaController.curtidas(req, res);
 })
 
+router.get('/salvar-usuario', function(req, res) {
+    musicaController.salvarUsuario(req, res);
+});
 module.exports = router;
